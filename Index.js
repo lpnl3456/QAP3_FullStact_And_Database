@@ -15,8 +15,10 @@ app.get('/', (req, res) => {
 });
 
 const animalsRouter = require('./routes/animals')
-console.log("Ceated route ");
 app.use('/animals', animalsRouter);
+
+const speciesRouter = require('./routes/species')
+app.use('/species', speciesRouter);
 
 app.listen(PORT, () => {
     console.log(`Simple app running on port ${PORT}.`)
