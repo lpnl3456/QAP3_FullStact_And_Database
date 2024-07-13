@@ -1,0 +1,1 @@
+DELETE FROM "Animals" WHERE "Animal_ID" = 5;
