@@ -18,6 +18,23 @@ ORDER BY \"Caretaker_ID\" ASC ;"
   }); 
 };
 
+var addCaretaker = function(fname, lname, age, email) {
+    if(DEBUG) console.log("caretakers.pg.dal.addActor()");
+    return new Promise(function(resolve, reject) {
+      const sql = "INSERT INTO public.\"Caretakers\"(\"First_Name\", \"Last_Name\",\"Age\", \"Email\") \
+          VALUES ($1, $2, $3, $4);";
+      dal.query(sql, [fname, lname, age, email], (err, result) => {
+        if (err) {
+            if(DEBUG) console.log(err);
+            reject(err);
+          } else {
+            resolve(result.rows);
+          }
+      }); 
+    });
+  };
+
 module.exports = {
-    getCaretakers
+    getCaretakers,
+    addCaretaker
 }
