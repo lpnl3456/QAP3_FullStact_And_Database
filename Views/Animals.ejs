@@ -11,6 +11,17 @@ html lang="en">
                     
                     <% }) %>
             <% } %>
+        </br><label>Add Animal:</label></br>
+        <label>Name:
+            <input type="text" id="name" name="name" value="<%= locals.name %>" required>
+        </label>
+        <label>Age:
+            <input type="text" id="age" name="age" value="<%= locals.age %>" required>
+        </label>
+        <label>Species Name:
+            <input type="text" id="species_Name" name="speciesName" value="<%= locals.speciesName %>" required>
+        </label>
+        <button>POST</button>
         </form>
         </div>
     </body>

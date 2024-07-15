@@ -13,4 +13,15 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.post('/', async (req, res) => {
+    if(DEBUG) console.log("animals.POST");
+    try {
+        await animalsDAL.addAnimal(req.body.name, req.body.age, req.body.speciesName);
+        res.redirect('/animals/');
+    } catch {
+        // log this error to an error log file.
+        res.render('503');
+    } 
+});
+
 module.exports = router

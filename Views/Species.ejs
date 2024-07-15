@@ -3,7 +3,7 @@ html lang="en">
     <body>
         <%- include('./partials/nav.ejs') %>
         <div class="Species content">
-            <form action="/animals" method="POST">
+            <form action="/species" method="POST">
                 <b>Scpecies: </b></br> 
             <% if (theSpecie.length > 0) { %>
                 <% theSpecie.forEach(species => { %>
@@ -11,6 +11,19 @@ html lang="en">
                     
                     <% }) %>
             <% } %>
+        </br><label>Add Caretaker:</label></br>
+        <label>Species Name:
+            <input type="text" id="speciesName" name="speciesName" value="<%= locals.speciesName %>" required>
+        </label>
+        <label>Scientific Name:
+            <input type="text" id="scientificName" name="scientificName" value="<%= locals.scientificName %>" required>
+        </label>
+        
+        <label>Caretaker ID:
+            <input type="text" id="caretakerID" name="caretakerID" value="<%= locals.caretakerID %>" required>
+        </label>
+        </br>
+        <button>POST</button>
         </form>
         </div>
     </body>
