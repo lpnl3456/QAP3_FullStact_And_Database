@@ -20,6 +20,9 @@ app.use('/animals', animalsRouter);
 const speciesRouter = require('./routes/species')
 app.use('/species', speciesRouter);
 
+const caretakerRouter = require('./routes/caretakers')
+app.use('/caretakers', caretakerRouter);
+
 app.listen(PORT, () => {
     console.log(`Simple app running on port ${PORT}.`)
 });
