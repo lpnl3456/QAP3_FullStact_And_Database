@@ -1,0 +1,1 @@
+DELETE FROM "Caretakers" WHERE "Caretaker_ID" = 8;

@@ -1,0 +1,1 @@
+DELETE FROM "Species" WHERE "Species_Name" = 'Moose';
