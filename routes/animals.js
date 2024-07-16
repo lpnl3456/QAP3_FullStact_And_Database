@@ -29,6 +29,11 @@ router.get('/:id/edit', async (req, res) => {
     res.render('animal.ejs', {name: req.query.name, age: req.query.age, theId: req.params.id});
 });
 
+router.get('/:id/replace', async (req, res) => {
+    if(DEBUG) console.log('animals.Edit : ' + req.params.id);
+    res.render('putAnimals.ejs', {name: req.query.name, age: req.query.age, speciesName: req.query.speciesName, theId: req.params.id});
+});
+
 router.get('/:id', async (req, res) => {
     try {
         const anAnimal = await animalsDAL.getAnimalById(req.params.Animal_ID); // from postgresql
@@ -47,6 +52,20 @@ router.get('/:id', async (req, res) => {
     
     try {
         await animalsDAL.patchAnimals(req.params.id, req.body.name, req.body.age);
+        res.redirect('/animals/');
+    } catch {
+        // log this error to an error log file.
+        //res.render('503');
+
+        
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    if(DEBUG) console.log('animals.Put: ' + req.params.id);
+    
+    try {
+        await animalsDAL.putAnimals(req.params.id, req.body.name, req.body.age, req.body.specieName);
         res.redirect('/animals/');
     } catch {
         // log this error to an error log file.

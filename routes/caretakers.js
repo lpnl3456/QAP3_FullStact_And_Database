@@ -31,6 +31,10 @@ router.get('/:id/edit', async (req, res) => {
     if(DEBUG) console.log('caretaker.Edit : ' + req.params.id);
     res.render('caretaker.ejs', {firstName: req.query.FirstName, lastName: req.query.LastName, age: req.query.age, email: req.query.Email, theId: req.params.id});
 });
+router.get('/:id/replace', async (req, res) => {
+    if(DEBUG) console.log('caretaker.Edit : ' + req.params.id);
+    res.render('putCaretaker.ejs', {firstName: req.query.FirstName, lastName: req.query.LastName, age: req.query.age, email: req.query.Email, theId: req.params.id});
+});
 
 router.get('/:id', async (req, res) => {
     try {
@@ -49,6 +53,17 @@ router.get('/:id', async (req, res) => {
     if(DEBUG) console.log('caretakers.PATCH: ' + req.params.id);
     try {
         await caretakersDAL.patchCaretaker(req.params.id, req.body.firstName, req.body.lastName, req.body.age, req.body.email);
+        res.redirect('/caretakers/');
+    } catch {
+        // log this error to an error log file.
+        //res.render('503');
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    if(DEBUG) console.log('caretakers.PUT: ' + req.params.id);
+    try {
+        await caretakersDAL.putCaretaker(req.params.id, req.body.firstName, req.body.lastName, req.body.age, req.body.email);
         res.redirect('/caretakers/');
     } catch {
         // log this error to an error log file.

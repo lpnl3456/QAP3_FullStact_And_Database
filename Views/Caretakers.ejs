@@ -9,6 +9,7 @@
                 <% theCaretaker.forEach(caretaker => { %>
                     <br><%= caretaker.Caretaker_ID %> <%= caretaker.First_Name %> <%=caretaker.Last_Name%> <%=caretaker.Age%> <%=caretaker.Email%></br>
                     <a href="/caretakers/<%=caretaker.Caretaker_ID%>/edit?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age<%=caretaker.Age%> &Email=<%=caretaker.Email%>">edit</a>
+                    <a href="/caretakers/<%=caretaker.Caretaker_ID%>/replace?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age<%=caretaker.Age%> &Email=<%=caretaker.Email%>">replace</a>
                     <% }) %>
             <% } %>
         </br><label>Add Caretaker:</label></br>

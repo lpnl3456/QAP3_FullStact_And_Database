@@ -53,8 +53,22 @@ var getAnimalById = function(id) {
 var patchAnimals = function(id, name, age) {
   if(DEBUG) console.log("animals.pg.dal.patchAnimal()");
   return new Promise(function(resolve, reject) {
-    const sql = "UPDATE public.\"Animals\" SET \"Name\"=$2, \"Age\"=$3 WHERE \"Animal_ID\"=$1;";
+    const sql = "UPDATE public.\"Animals\" SET \"Name\"=$2, \"Age\"=$3,  WHERE \"Animal_ID\"=$1;";
     dal.query(sql, [id, name, age], (err, result) => {
+      if (err) {
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
+
+var putAnimals = function(id, name, age, specie) {
+  if(DEBUG) console.log("animals.pg.dal.putAnimal()");
+  return new Promise(function(resolve, reject) {
+    const sql = "UPDATE public.\"Animals\" SET \"Name\"=$2, \"Age\"=$3, \"Species_Name\"=$4 WHERE \"Animal_ID\"=$1;";
+    dal.query(sql, [id, name, age, specie], (err, result) => {
       if (err) {
           reject(err);
         } else {
@@ -70,5 +84,6 @@ module.exports = {
     getAnimals,
     addAnimal,
     getAnimalById,
-    patchAnimals
+    patchAnimals,
+    putAnimals
 }
