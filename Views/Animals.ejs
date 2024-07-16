@@ -8,6 +8,7 @@ html lang="en">
             <% if (theAnimal.length > 0) { %>
                 <% theAnimal.forEach(animals => { %>
                     <br><%= animals.Name %> <%= animals.Age %> <%=animals.Species_Name%></br>
+                    <a href="/animals/<%=animals.Animal_ID%>/edit?name=<%=animals.Name%>&age=<%=animals.Age%>">edit</a>
                     
                     <% }) %>
             <% } %>

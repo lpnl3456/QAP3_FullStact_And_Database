@@ -1,0 +1,17 @@
+<html lang="en">
+    <%- include('./partials/Head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+       
+        <div class="create content">
+            <form action="/Species/<%= locals.theId %>?_method=PATCH" method="POST">
+                <label>Edit Caretaker for Species:</br>
+                    <input type="text" name="caretakerID" value="<%= locals.caretakerID %>" required>
+                </label></br>
+                <button>PATCH</button>
+            </form>
+        </div>
+        
+    </body>
+
+</html>
