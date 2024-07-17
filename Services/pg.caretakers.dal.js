@@ -78,10 +78,25 @@ var addCaretaker = function(fname, lname, age, email) {
     });
   };
 
+  var deleteCaretaker = function(id) {
+    if(DEBUG) console.log("caretaker.pg.dal.deleteSpecies()");
+    return new Promise(function(resolve, reject) {
+      const sql = "DELETE FROM public.\"Caretakers\" WHERE \"Caretaker_ID\" = $1;";
+      dal.query(sql, [id], (err, result) => {
+        if (err) {
+            reject(err);
+          } else {
+            resolve(result.rows);
+          }
+      }); 
+    });
+  };
+
 module.exports = {
     getCaretakers,
     addCaretaker,
     getCaretakerByActorId,
     patchCaretaker,
-    putCaretaker
+    putCaretaker,
+    deleteCaretaker
 }

@@ -85,7 +85,7 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id/delete', async (req, res) => {
     if(DEBUG) console.log('caretaker.delete : ' + req.params.id);
-    res.render('deleteTaker.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
+    res.render('deleteCaretaker.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
 });
 
 
