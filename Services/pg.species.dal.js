@@ -67,8 +67,22 @@ var addSpecies = function(spName, scName, caretaker) {
   var putSpecies = function(id, scName, caretakerID, ) {
     if(DEBUG) console.log("catetakers.pg.dal.patchCaretaker()");
     return new Promise(function(resolve, reject) {
-      const sql = "UPDATE public.\"Species\" SET \"Species_Name\"=$1, \"Scientific_Name\"=$2, \"Caretaker_ID\" =$3 WHERE \"Species_Name\"=$1;";
+      const sql = "UPDATE public.\"Species\" SET \"Scientific_Name\"=$2, \"Caretaker_ID\" =$3 WHERE \"Species_Name\"=$1;";
       dal.query(sql, [id, scName, caretakerID], (err, result) => {
+        if (err) {
+            console.log(err);
+          } else {
+            resolve(result.rows);
+          }
+      }); 
+    });
+  };
+
+  var deleteSpecies = function(id) {
+    if(DEBUG) console.log("species.pg.dal.deleteSpecies()");
+    return new Promise(function(resolve, reject) {
+      const sql = "DELETE FROM public.\"Species\" WHERE \"Species_Name\" = $1;";
+      dal.query(sql, [id], (err, result) => {
         if (err) {
             reject(err);
           } else {
@@ -83,5 +97,6 @@ module.exports = {
     addSpecies,
     getSpecieBySpecieName,
     patchSpecie,
-    putSpecies
+    putSpecies,
+    deleteSpecies
 }

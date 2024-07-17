@@ -78,6 +78,19 @@ var putAnimals = function(id, name, age, specie) {
   });
 };
 
+var deleteAnimals = function(id) {
+  if(DEBUG) console.log("animals.pg.dal.deleteSpecies()");
+  return new Promise(function(resolve, reject) {
+    const sql = "DELETE FROM public.\"Animals\" WHERE \"Animal_ID\" = $1;";
+    dal.query(sql, [id], (err, result) => {
+      if (err) {
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
 
 
 module.exports = {
@@ -85,5 +98,6 @@ module.exports = {
     addAnimal,
     getAnimalById,
     patchAnimals,
-    putAnimals
+    putAnimals,
+    deleteAnimals
 }

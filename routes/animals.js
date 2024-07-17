@@ -75,4 +75,21 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    if(DEBUG) console.log('animals.DELETE: ' + req.params.id);
+    try {
+        await animalsDAL.deleteAnimals(req.params.id);
+        res.redirect('/animals/');
+    } catch (err) {
+        if(DEBUG) console.error(err);
+        // log this error to an error log file.
+        //res.render('503');
+    }
+});
+
+router.get('/:id/delete', async (req, res) => {
+    if(DEBUG) console.log('animals.delete : ' + req.params.id);
+    res.render('deleteSpecies.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
+});
+
 module.exports = router

@@ -28,6 +28,8 @@ router.get('/:id/edit', async (req, res) => {
     res.render('specie.ejs', {caretakerID: req.query.caretakerID, theId: req.params.id});
 });
 
+
+
 router.get('/:id', async (req, res) => {
     try {
         const aSpecies = await speciesDAL.getSpecieBySpecieName(req.params.speciesName); // from postgresql
@@ -65,10 +67,28 @@ router.get('/:id/replace', async (req, res) => {
 router.put('/:id', async (req, res) => {
     if(DEBUG) console.log('species.PUT: ' + req.params.id);
     try {
-        await speciesDAL.putSpecies(req.body.speciesName, req.body.scientificName, req.body.caretakerID);
+        await speciesDAL.putSpecies(req.params.id, req.body.scientificName, req.body.caretakerID);
         res.redirect('/species/');
     } catch (error) {
         console.log(error)
     }
 });
+
+router.delete('/:id', async (req, res) => {
+    if(DEBUG) console.log('species.DELETE: ' + req.params.id);
+    try {
+        await speciesDAL.deleteSpecies(req.params.id);
+        res.redirect('/species/');
+    } catch (err) {
+        if(DEBUG) console.error(err);
+        // log this error to an error log file.
+        //res.render('503');
+    }
+});
+
+router.get('/:id/delete', async (req, res) => {
+    if(DEBUG) console.log('species.delete : ' + req.params.id);
+    res.render('deleteSpecies.ejs', {theId: req.params.id, scientificName: req.params.scientificName, caretakereID: req.params.caretakerID});
+});
+
 module.exports = router

@@ -6,7 +6,6 @@
         <div class="create content">
             <form action="/species/<%= locals.theId %>?_method=PUT" method="POST">
                 <label>Edit Animal:</br>
-                    <input type="text" name="speciesName" value="<%= locals.theId %>" required>
                     <input type="text" name="scientificName" value="<%= locals.scientificName %>" required>
                     <input type="text" name="caretakerID" value="<%= locals.CaretakerID %>" required>
                 </label></br>
