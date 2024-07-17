@@ -71,5 +71,23 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    if(DEBUG) console.log('caretakers.DELETE: ' + req.params.id);
+    try {
+        await caretakersDAL.deleteCaretaker(req.params.id);
+        res.redirect('/caretakers/');
+    } catch (err) {
+        if(DEBUG) console.error(err);
+        // log this error to an error log file.
+        //res.render('503');
+    }
+});
+
+router.get('/:id/delete', async (req, res) => {
+    if(DEBUG) console.log('caretaker.delete : ' + req.params.id);
+    res.render('deleteTaker.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
+});
+
+
 
 module.exports = router

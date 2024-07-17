@@ -89,7 +89,7 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id/delete', async (req, res) => {
     if(DEBUG) console.log('animals.delete : ' + req.params.id);
-    res.render('deleteSpecies.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
+    res.render('deleteAnimal.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
 });
 
 module.exports = router
