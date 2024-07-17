@@ -57,4 +57,18 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/:id/replace', async (req, res) => {
+    if(DEBUG) console.log('species.replace : ' + req.params.id);
+    res.render('putSpecie.ejs', {theId: req.params.id, scientificName: req.params.scientificName, caretakereID: req.params.caretakerID});
+});
+
+router.put('/:id', async (req, res) => {
+    if(DEBUG) console.log('species.PUT: ' + req.params.id);
+    try {
+        await speciesDAL.putSpecies(req.body.speciesName, req.body.scientificName, req.body.caretakerID);
+        res.redirect('/species/');
+    } catch (error) {
+        console.log(error)
+    }
+});
 module.exports = router
