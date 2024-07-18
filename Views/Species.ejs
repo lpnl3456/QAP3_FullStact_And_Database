@@ -4,13 +4,14 @@ html lang="en">
         <%- include('./partials/nav.ejs') %>
         <div class="Species content">
             <form action="/species" method="POST">
-                <b>Scpecies: </b></br> 
+                <b>Species: </b></br> 
             <% if (theSpecie.length > 0) { %>
                 <% theSpecie.forEach(species => { %>
-                    <br><%= species.Species_Name %> <%= species.Scientific_Name %> <%=species.Caretaker_ID%></br>
-                    <a href="/species/<%=species.Species_Name%>/edit?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">edit</a>
-                    <a href="/species/<%=species.Species_Name%>/replace?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">replace</a>
-                    <a href="/species/<%=species.Species_Name%>/delete?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">delete</a>
+                    <br> <%= species.Species_Name %> <br> Scientific Name: <%= species.Scientific_Name %>&nbsp&nbspCaretaker ID:<%=species.Caretaker_ID%></br>
+                    <a href="/species/<%=species.Species_Name%>/edit?scientificName=<%=species.Scientific_Name%>&CaretakerID=<%=species.Caretaker_ID%>">edit</a>
+                    <a href="/species/<%=species.Species_Name%>/replace?scientificName=<%=species.Scientific_Name%>&CaretakerID=<%=species.Caretaker_ID%>">replace</a>
+                    <a href="/species/<%=species.Species_Name%>/delete?scientificName=<%=species.Scientific_Name%>&CaretakerID=<%=species.Caretaker_ID%>">delete</a>
+                    <br>
                     <% }) %>
             <% } %>
         </br><label>Add Caretaker:</label></br>

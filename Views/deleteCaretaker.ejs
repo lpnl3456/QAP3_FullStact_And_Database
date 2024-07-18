@@ -5,7 +5,7 @@
         <div class="create content">
             <form action="/caretakers/<%= locals.theId %>?_method=DELETE" method="POST">
                 <label>Are you sure you want to delete this caretaker?</br>
-                    <input type="text" id="<%= locals.theId %>" name="scientificName" value="<%= locals.scientificName %> <%= locals.caretakerID %>" readonly>
+                    <input type="text" id="<%= locals.theId %>" name="scientificName" value="<%= locals.firstName %> <%= locals.lastName %> <%= locals.age %> <%= locals.email %>" readonly>
                 </label>
                 <button>DELETE</button>
             </form>
