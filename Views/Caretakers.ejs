@@ -1,0 +1,34 @@
+<html lang="en">
+    <%- include('./partials/Head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="Species content">
+            <form action="/caretakers" method="POST">
+                <b>Scpecies: </b></br> 
+            <% if (theCaretaker.length > 0) { %>
+                <% theCaretaker.forEach(caretaker => { %>
+                    <br><%= caretaker.Caretaker_ID %> <%= caretaker.First_Name %> <%=caretaker.Last_Name%> <%=caretaker.Age%> <%=caretaker.Email%></br>
+                    
+                    <% }) %>
+            <% } %>
+        </br><label>Add Caretaker:</label></br>
+        <label>First Name:
+            <input type="text" id="firstName" name="firstName" value="<%= locals.firstName %>" required>
+        </label>
+        <label>Last Name:
+            <input type="text" id="lastName" name="lastName" value="<%= locals.lastName %>" required>
+        </label>
+        <label>Age:
+            <input type="text" id="age" name="age" value="<%= locals.age %>" required>
+        </label>
+
+        <label>Email:
+            <input type="text" id="email" name="email" value="<%= locals.email %>">
+        </label>
+        </br>
+        <button>POST</button>
+    </form>
+        </div>
+    </body>
+    <%- include('./partials/Footer.ejs') %>
+</html>
