@@ -1,0 +1,20 @@
+<html lang="en">
+    <%- include('./partials/Head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+       
+        <div class="create content">
+            <form action="/caretakers/<%= locals.theId %>?_method=PATCH" method="POST">
+                <label>Edit Caretakers Names:</br>
+                    <input type="text" name="firstName" value="<%= locals.firstName %>" required>
+                    <input type="text" name="lastName" value="<%= locals.lastName %>" required>
+                    <input type="text" name="age" value="<%= locals.age %>" required>
+                    <input type="text" name="email" value="<%= locals.email %>" required>
+                </label></br>
+                <button>PATCH</button>
+            </form>
+        </div>
+        
+    </body>
+
+</html>

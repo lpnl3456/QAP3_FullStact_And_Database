@@ -34,7 +34,39 @@ var addSpecies = function(spName, scName, caretaker) {
     });
   };
 
+  var getSpecieBySpecieName = function(id) {
+    if(DEBUG) console.log("species.pg.dal.getgetSpecieBySpecieName()");
+    return new Promise(function(resolve, reject) {
+      const sql = "SELECT \"Species_Name\" AS _id, \"Caretaker_ID FROM \" Species WHERE Species_Name = $1";
+      dal.query(sql, [id], (err, result) => {
+        if (err) {
+          // logging should go here
+          if(DEBUG) console.log(err);
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+      }); 
+    }); 
+  };
+
+  var patchSpecie = function(id, caretakerID) {
+    if(DEBUG) console.log("catetakers.pg.dal.patchCaretaker()");
+    return new Promise(function(resolve, reject) {
+      const sql = "UPDATE public.\"Species\" SET \"Caretaker_ID\"=$2 WHERE \"Species_Name\"=$1;";
+      dal.query(sql, [id, caretakerID], (err, result) => {
+        if (err) {
+            reject(err);
+          } else {
+            resolve(result.rows);
+          }
+      }); 
+    });
+  };
+
 module.exports = {
     getSpecies,
-    addSpecies
+    addSpecies,
+    getSpecieBySpecieName,
+    patchSpecie
 }

@@ -24,4 +24,36 @@ router.post('/', async (req, res) => {
     } 
 });
 
+router.get('/:id/edit', async (req, res) => {
+    if(DEBUG) console.log('animals.Edit : ' + req.params.id);
+    res.render('animal.ejs', {name: req.query.name, age: req.query.age, theId: req.params.id});
+});
+
+router.get('/:id', async (req, res) => {
+    try {
+        const anAnimal = await animalsDAL.getAnimalById(req.params.Animal_ID); // from postgresql
+        if(DEBUG) console.log(`animal.router.get/:id ${anAnimal}`);
+        if (anAnimal)
+            res.render('animal', {anAnimal});
+        else
+            res.render('norecord');
+    } catch {
+        res.render('503');
+    }
+  });
+
+  router.patch('/:id', async (req, res) => {
+    if(DEBUG) console.log('animals.PATCH: ' + req.params.id);
+    
+    try {
+        await animalsDAL.patchAnimals(req.params.id, req.body.name, req.body.age);
+        res.redirect('/animals/');
+    } catch {
+        // log this error to an error log file.
+        //res.render('503');
+
+        
+    }
+});
+
 module.exports = router
