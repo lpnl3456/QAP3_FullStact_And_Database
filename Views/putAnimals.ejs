@@ -1,19 +1,36 @@
 <html lang="en">
     <%- include('./partials/Head.ejs') %>
     <body>
+        <div class = mainBox>
+            <div class = displayBox>
         <%- include('./partials/nav.ejs') %>
+        <br>
        
         <div class="create content">
             <form action="/animals/<%= locals.theId %>?_method=PUT" method="POST">
-                <label>Edit Animal:</br>
-                    <input type="text" name="name" value="<%= locals.name %>" required>
-                    <input type="text" name="age" value="<%= locals.age %>" required>
-                    <input type="text" name="specieName" value="<%= locals.specieName %>" required>
-                </label></br>
+                <label>Replace Animal:</br>
+                    <br>
+                    <label> Name:<br><input type="text" name="name" value="<%= locals.name %>" required></label>
+                    <br>
+                    <br>
+                    <label>Age:<br> <input type="text" name="age" value="<%= locals.age %>" required></label>
+                    <br>
+                    <br>
+                    <label>Species: <br><input type="text" name="specieName" value="<%= locals.specieName %>" required>
+                        <br>
+                   
+                </label>
+            </br>
+            
                 <button>Put</button>
+                
             </form>
+            <br>
+            
         </div>
-        
+        <%- include('./partials/Footer.ejs') %>
+        </div>
+    </div>
     </body>
 
 </html>

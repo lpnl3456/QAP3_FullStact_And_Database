@@ -1,17 +1,29 @@
 <html lang="en">
     <%- include('./partials/Head.ejs') %>
+    <br>
     <body>
+        <div class = mainBox>
+            <div class = displayBox>
         <%- include('./partials/nav.ejs') %>
+        <br>
        
         <div class="create content">
             <form action="/animals/<%= locals.theId %>?_method=PATCH" method="POST">
-                <label>Edit Animal:</br>
-                    <input type="text" name="name" value="<%= locals.name %>" required>
-                    <input type="text" name="age" value="<%= locals.age %>" required>
+                <label><h3>Edit Animal:</h3>
+                    <br>
+                    <label>Name:<br> <input type="text" name="name" value="<%= locals.name %>" required></label>
+                    <br>
+                    <br>
+                    <label>Age:<br><input type="text" name="age" value="<%= locals.age %>" required></label>
                 </label></br>
+                <br>
                 <button>PATCH</button>
             </form>
         </div>
+        <%- include('./partials/Footer.ejs') %>
+    </div>
+    
+    </div>
         
     </body>
 

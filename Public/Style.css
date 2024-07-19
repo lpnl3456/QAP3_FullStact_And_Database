@@ -1,0 +1,37 @@
+.mainBox{
+    width: 1000px;
+    background-color: aqua;
+    margin-bottom: 10px;
+}
+
+.displayBox{
+    width: 800px;
+    margin-left: 100px;
+    padding-left: 10px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.createLabel{
+    display: block;
+    margin-top: 24px;
+  }
+  a:hover {
+    color: grey;
+    text-decoration: none;
+  }
+  p, h1, h2, h3, a{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #222;
+  }
+
+  label{
+    font-size: 20px;
+  }
+  .deleteBoxSize{
+    width: 100%;
+    font-size: 16pt;
+  }
+
+  

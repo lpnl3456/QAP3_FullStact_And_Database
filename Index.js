@@ -2,13 +2,15 @@ const express = require('express');
 const methodOverride = require('method-override');
 const app = express();
 const PORT = 3000;
+const path = require('path')
 
 
 global.DEBUG = true;
 app.set('view engine', 'ejs');
-//app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true, })); // This is important!
-app.use(methodOverride('_method')); // So is this!
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true, })); 
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 app.get('/', (req, res) => {
     res.render('Index.ejs', { name: 'Cassian Andor'});
