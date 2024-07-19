@@ -1,15 +1,21 @@
 <html lang="en">
     <%- include('./partials/head.ejs') %>
     <body>
-        <%- include('./partials/nav.ejs') %>
+        <div class = mainBox>
+            <div class = displayBox>
+        <%- include('./partials/nav.ejs') %><br>
         <div class="create content">
             <form action="/species/<%= locals.theId %>?_method=DELETE" method="POST">
-                <label>Are you sure you want to delete this Species?</br>
+                <label>Are You Sure You Want to Delete This Species?</br>
+                    <br>
                     <input type="text" id="<%= locals.theId %>" name="scientificName" value="<%= locals.theId %> <%= locals.scientificName %> <%= locals.caretakerID %>" readonly>
-                </label>
+                </label><br>
+                <br>
                 <button>DELETE</button>
             </form>
         </div>
     </body>
     <%- include('./partials/Footer.ejs') %>
+</div>
+</div>
 </html>
