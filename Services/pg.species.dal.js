@@ -18,6 +18,23 @@ ORDER BY \"Species_Name\" ASC;"
   }); 
 };
 
+var addSpecies = function(spName, scName, caretaker) {
+    if(DEBUG) console.log("species.pg.dal.addSpecies()");
+    return new Promise(function(resolve, reject) {
+      const sql = "INSERT INTO public.\"Species\"(\"Species_Name\", \"Scientific_Name\",\"Caretaker_ID\") \
+          VALUES ($1, $2, $3)";
+      dal.query(sql, [spName, scName, caretaker], (err, result) => {
+        if (err) {
+            if(DEBUG) console.log(err);
+            reject(err);
+          } else {
+            resolve(result.rows);
+          }
+      }); 
+    });
+  };
+
 module.exports = {
-    getSpecies
+    getSpecies,
+    addSpecies
 }
