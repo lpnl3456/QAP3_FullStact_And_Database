@@ -1,0 +1,19 @@
+<html lang="en">
+    <%- include('./partials/Head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+       
+        <div class="create content">
+            <form action="/animals/<%= locals.theId %>?_method=PUT" method="POST">
+                <label>Edit Animal:</br>
+                    <input type="text" name="name" value="<%= locals.name %>" required>
+                    <input type="text" name="age" value="<%= locals.age %>" required>
+                    <input type="text" name="specieName" value="<%= locals.specieName %>" required>
+                </label></br>
+                <button>Put</button>
+            </form>
+        </div>
+        
+    </body>
+
+</html>

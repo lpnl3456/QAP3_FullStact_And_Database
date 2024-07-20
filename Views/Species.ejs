@@ -9,7 +9,8 @@ html lang="en">
                 <% theSpecie.forEach(species => { %>
                     <br><%= species.Species_Name %> <%= species.Scientific_Name %> <%=species.Caretaker_ID%></br>
                     <a href="/species/<%=species.Species_Name%>/edit?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">edit</a>
-                    
+                    <a href="/species/<%=species.Species_Name%>/replace?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">replace</a>
+                    <a href="/species/<%=species.Species_Name%>/delete?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">delete</a>
                     <% }) %>
             <% } %>
         </br><label>Add Caretaker:</label></br>

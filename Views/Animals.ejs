@@ -9,7 +9,9 @@ html lang="en">
                 <% theAnimal.forEach(animals => { %>
                     <br><%= animals.Name %> <%= animals.Age %> <%=animals.Species_Name%></br>
                     <a href="/animals/<%=animals.Animal_ID%>/edit?name=<%=animals.Name%>&age=<%=animals.Age%>">edit</a>
-                    
+                    <a href="/animals/<%=animals.Animal_ID%>/replace?name=<%=animals.Name%>&age=<%=animals.Age%>&specieName=<%=animals.Species_Name%>">Replace</a>
+                    <a href="/animals/<%=animals.Animal_ID%>/delete?name=<%=animals.Name%>&age=<%=animals.Age%>&specieName=<%=animals.Species_Name%>">Delete</a>
+
                     <% }) %>
             <% } %>
         </br><label>Add Animal:</label></br>
