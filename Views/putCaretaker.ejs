@@ -1,20 +1,30 @@
 <html lang="en">
     <%- include('./partials/Head.ejs') %>
     <body>
+        <div class = mainBox>
+            <div class = displayBox>
         <%- include('./partials/nav.ejs') %>
+        <br>
        
         <div class="create content">
             <form action="/caretakers/<%= locals.theId %>?_method=PATCH" method="POST">
                 <label>Replace Caretaker:</br>
-                    <input type="text" name="firstName" value="<%= locals.firstName %>" required>
-                    <input type="text" name="lastName" value="<%= locals.lastName %>" required>
-                    <input type="text" name="age" value="<%= locals.age %>" required>
-                    <input type="text" name="email" value="<%= locals.email %>" required>
+                    <br>
+                    <label>First Name<br><input type="text" name="firstName" value="<%= locals.firstName %>" required></label><br>
+                    <br>
+                    <label>Last Name<br><input type="text" name="lastName" value="<%= locals.lastName %>" required></label><br>
+                    <br>
+                    <label>Age<br><input type="text" name="age" value="<%= locals.age %>" required></label><br>
+                    <br>
+                    <label>Email<br><input type="text" name="email" value="<%= locals.email %>" required></label>
                 </label></br>
+                <br>
                 <button>PATCH</button>
             </form>
         </div>
-        
+        <%- include('./partials/Footer.ejs') %>
+    </div>
+    </div>
     </body>
 
 </html>

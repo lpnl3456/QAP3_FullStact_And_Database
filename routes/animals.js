@@ -31,7 +31,7 @@ router.get('/:id/edit', async (req, res) => {
 
 router.get('/:id/replace', async (req, res) => {
     if(DEBUG) console.log('animals.Edit : ' + req.params.id);
-    res.render('putAnimals.ejs', {name: req.query.name, age: req.query.age, speciesName: req.query.speciesName, theId: req.params.id});
+    res.render('putAnimals.ejs', {name: req.query.name, age: req.query.age, specieName: req.query.specieName, theId: req.params.id});
 });
 
 router.get('/:id', async (req, res) => {
@@ -89,7 +89,7 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id/delete', async (req, res) => {
     if(DEBUG) console.log('animals.delete : ' + req.params.id);
-    res.render('deleteAnimal.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
+    res.render('deleteAnimal.ejs', {theId: req.params.id, name: req.query.name, age: req.query.age, specieName: req.query.specieName});
 });
 
 module.exports = router

@@ -1,17 +1,20 @@
 <html lang="en">
     <%- include('./partials/Head.ejs') %>
     <body>
+        <div class = mainBox>
+            <div class = displayBox>
         <%- include('./partials/nav.ejs') %>
         <div class="Species content">
             <form action="/caretakers" method="POST">
                 <b>Caretakers: </b></br> 
             <% if (theCaretaker.length > 0) { %>
                 <% theCaretaker.forEach(caretaker => { %>
-                    <br><%= caretaker.Caretaker_ID %> <%= caretaker.First_Name %> <%=caretaker.Last_Name%> <%=caretaker.Age%> <%=caretaker.Email%></br>
-                    <a href="/caretakers/<%=caretaker.Caretaker_ID%>/edit?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age<%=caretaker.Age%> &Email=<%=caretaker.Email%>">edit</a>
-                    <a href="/caretakers/<%=caretaker.Caretaker_ID%>/replace?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age<%=caretaker.Age%> &Email=<%=caretaker.Email%>">replace</a>
-                    <a href="/caretakers/<%=caretaker.Caretaker_ID%>/delete?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age<%=caretaker.Age%> &Email=<%=caretaker.Email%>">delete</a>
-
+                    <br><h3>Name: <%= caretaker.First_Name %> <%=caretaker.Last_Name%></h3><br> Age: <%=caretaker.Age%>&nbsp;&nbsp; Email: <%=caretaker.Email%></br>
+                    <br>
+                    <a href="/caretakers/<%=caretaker.Caretaker_ID%>/edit?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age=<%=caretaker.Age%> &Email=<%=caretaker.Email%>">edit</a>
+                    <a href="/caretakers/<%=caretaker.Caretaker_ID%>/replace?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age=<%=caretaker.Age%> &Email=<%=caretaker.Email%>">replace</a>
+                    <a href="/caretakers/<%=caretaker.Caretaker_ID%>/delete?FirstName=<%=caretaker.First_Name%>&LastName=<%=caretaker.Last_Name%>&Age=<%=caretaker.Age%> &Email=<%=caretaker.Email%>">delete</a>
+                    <br>
                     <% }) %>
             <% } %>
         </br><label>Add Caretaker:</label></br>
@@ -34,4 +37,6 @@
         </div>
     </body>
     <%- include('./partials/Footer.ejs') %>
+</div>
+</div>
 </html>

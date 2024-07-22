@@ -1,33 +1,42 @@
-html lang="en">
+
     <%- include('./partials/Head.ejs') %>
     <body>
+        <div class = mainBox>
+            <div class = displayBox>
         <%- include('./partials/nav.ejs') %>
         <div class="Species content">
             <form action="/species" method="POST">
-                <b>Scpecies: </b></br> 
+                <b>Species: </b></br> 
             <% if (theSpecie.length > 0) { %>
                 <% theSpecie.forEach(species => { %>
-                    <br><%= species.Species_Name %> <%= species.Scientific_Name %> <%=species.Caretaker_ID%></br>
-                    <a href="/species/<%=species.Species_Name%>/edit?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">edit</a>
-                    <a href="/species/<%=species.Species_Name%>/replace?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">replace</a>
-                    <a href="/species/<%=species.Species_Name%>/delete?scientificName=<%=species.Scientific_name%>&CaretakerID=<%=species.Caretaker_ID%>">delete</a>
+                    <br> <h3>Species: <%= species.Species_Name %></h3><br> Scientific Name: <%= species.Scientific_Name %>&nbsp;&nbsp; Caretaker ID:<%=species.Caretaker_ID%></br>
+                    <a href="/species/<%=species.Species_Name%>/edit?scientificName=<%=species.Scientific_Name%>&CaretakerID=<%=species.Caretaker_ID%>">edit</a>
+                    <a href="/species/<%=species.Species_Name%>/replace?scientificName=<%=species.Scientific_Name%>&CaretakerID=<%=species.Caretaker_ID%>">replace</a>
+                    <a href="/species/<%=species.Species_Name%>/delete?scientificName=<%=species.Scientific_Name%>&CaretakerID=<%=species.Caretaker_ID%>">delete</a>
+                    <br>
                     <% }) %>
             <% } %>
         </br><label>Add Caretaker:</label></br>
+        <br>
         <label>Species Name:
             <input type="text" id="speciesName" name="speciesName" value="<%= locals.speciesName %>" required>
         </label>
         <label>Scientific Name:
             <input type="text" id="scientificName" name="scientificName" value="<%= locals.scientificName %>" required>
         </label>
+        <br>
+        <br>
         
         <label>Caretaker ID:
             <input type="text" id="caretakerID" name="caretakerID" value="<%= locals.caretakerID %>" required>
         </label>
         </br>
+        <br>
         <button>POST</button>
         </form>
         </div>
     </body>
     <%- include('./partials/Footer.ejs') %>
+</div>
+</div>
 </html>

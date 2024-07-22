@@ -28,12 +28,12 @@ router.post('/', async (req, res) => {
 
 // https://localhost:3000/actors/205/edit
 router.get('/:id/edit', async (req, res) => {
-    if(DEBUG) console.log('caretaker.Edit : ' + req.params.id);
-    res.render('caretaker.ejs', {firstName: req.query.FirstName, lastName: req.query.LastName, age: req.query.age, email: req.query.Email, theId: req.params.id});
+    if(DEBUG) console.log('caretaker.Edit : ' + req.query.Age);
+    res.render('caretaker.ejs', {firstName: req.query.FirstName, lastName: req.query.LastName, age: req.query.Age, email: req.query.Email, theId: req.params.id});
 });
 router.get('/:id/replace', async (req, res) => {
     if(DEBUG) console.log('caretaker.Edit : ' + req.params.id);
-    res.render('putCaretaker.ejs', {firstName: req.query.FirstName, lastName: req.query.LastName, age: req.query.age, email: req.query.Email, theId: req.params.id});
+    res.render('putCaretaker.ejs', {firstName: req.query.FirstName, lastName: req.query.LastName, age: req.query.Age, email: req.query.Email, theId: req.params.id});
 });
 
 router.get('/:id', async (req, res) => {
@@ -85,7 +85,7 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id/delete', async (req, res) => {
     if(DEBUG) console.log('caretaker.delete : ' + req.params.id);
-    res.render('deleteCaretaker.ejs', {theId: req.params.id, name: req.params.name, age: req.params.age, species: req.params.species});
+    res.render('deleteCaretaker.ejs', {theId: req.params.id, firstName: req.query.FirstName, lastName: req.query.LastName, age: req.query.Age, email: req.query.Email});
 });
 
 

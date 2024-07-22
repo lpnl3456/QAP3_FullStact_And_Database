@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 });
 router.get('/:id/edit', async (req, res) => {
     if(DEBUG) console.log('species.Edit : ' + req.params.id);
-    res.render('specie.ejs', {caretakerID: req.query.caretakerID, theId: req.params.id});
+    res.render('specie.ejs', {caretakerID: req.query.CaretakerID, theId: req.params.id});
 });
 
 
@@ -61,7 +61,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/:id/replace', async (req, res) => {
     if(DEBUG) console.log('species.replace : ' + req.params.id);
-    res.render('putSpecie.ejs', {theId: req.params.id, scientificName: req.params.scientificName, caretakereID: req.params.caretakerID});
+    res.render('putSpecie.ejs', {theId: req.params.id, scientificName: req.query.scientificName, caretakerID: req.query.CaretakerID});
 });
 
 router.put('/:id', async (req, res) => {
@@ -88,7 +88,7 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id/delete', async (req, res) => {
     if(DEBUG) console.log('species.delete : ' + req.params.id);
-    res.render('deleteSpecies.ejs', {theId: req.params.id, scientificName: req.params.scientificName, caretakereID: req.params.caretakerID});
+    res.render('deleteSpecies.ejs', {theId: req.params.id, scientificName: req.query.scientificName, caretakerID: req.query.CaretakerID});
 });
 
 module.exports = router

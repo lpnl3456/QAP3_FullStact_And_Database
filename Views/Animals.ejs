@@ -1,20 +1,26 @@
-html lang="en">
-    <%- include('./partials/Head.ejs') %>
+ <%- include('./partials/Head.ejs') %>
+ <div class ="mainBox">
     <body>
+        <div class="displayBox">
         <%- include('./partials/nav.ejs') %>
-        <div class="Animals content">
+        
             <form action="/animals" method="POST">
-                <b>Animals: </b></br> 
+                <b><h2>Animals: </h2></b></br> 
             <% if (theAnimal.length > 0) { %>
                 <% theAnimal.forEach(animals => { %>
-                    <br><%= animals.Name %> <%= animals.Age %> <%=animals.Species_Name%></br>
+                    <br><h3>Name: <%= animals.Name %></h3>
+                    <br>Age: <%= animals.Age %> Species: <%=animals.Species_Name%></br>
                     <a href="/animals/<%=animals.Animal_ID%>/edit?name=<%=animals.Name%>&age=<%=animals.Age%>">edit</a>
                     <a href="/animals/<%=animals.Animal_ID%>/replace?name=<%=animals.Name%>&age=<%=animals.Age%>&specieName=<%=animals.Species_Name%>">Replace</a>
                     <a href="/animals/<%=animals.Animal_ID%>/delete?name=<%=animals.Name%>&age=<%=animals.Age%>&specieName=<%=animals.Species_Name%>">Delete</a>
 
+                    <br>
                     <% }) %>
             <% } %>
-        </br><label>Add Animal:</label></br>
+        </br>
+        
+            <label>Add Animal:</label></br>
+            <div class = "createLabel">
         <label>Name:
             <input type="text" id="name" name="name" value="<%= locals.name %>" required>
         </label>
@@ -24,9 +30,12 @@ html lang="en">
         <label>Species Name:
             <input type="text" id="species_Name" name="speciesName" value="<%= locals.speciesName %>" required>
         </label>
+    </div>
         <button>POST</button>
         </form>
-        </div>
+    
     </body>
     <%- include('./partials/Footer.ejs') %>
+</div>
+</div>
 </html>
